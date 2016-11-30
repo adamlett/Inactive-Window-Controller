@@ -1,3 +1,5 @@
+#SingleInstance off 
+
 ; Ask for Target Program
   Gui, Show , w200 h90, Doc Controller
   Gui, Add, Text, x10 y10 w160 Center, Choose Program to control
