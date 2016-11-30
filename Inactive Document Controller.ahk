@@ -107,7 +107,7 @@ NextKey:
   {
     title := % Window%values%
     SetTitleMatchMode, 3
-    ControlSend, AVL_AVView25, {Down}, %title%
+    ControlSend, AVL_AVView27, {Down}, %title%
   }
   else if (ProgramGroup == "PowerPoint")
     target.SlideShowWindow.View.Next
@@ -125,7 +125,7 @@ PrevKey:
   {
     title := % Window%values%
     SetTitleMatchMode, 3
-    ControlSend, AVL_AVView25, {Up}, %title%
+    ControlSend, AVL_AVView27, {Up}, %title%
   }
   else if (ProgramGroup == "PowerPoint")
     target.SlideShowWindow.View.Previous
