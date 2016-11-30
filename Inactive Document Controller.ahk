@@ -1,11 +1,11 @@
 ; Ask for Target Program
-Gui, Show , w200 h90, Doc Controller
-Gui, Add, Text, x10 y10 w160 Center, Choose Program to control
-Gui, Add, DropDownList, vProgramGroup, Chrome PDF|Adobe Reader|PowerPoint
-Gui, Add, Button, default, OK
+  Gui, Show , w200 h90, Doc Controller
+  Gui, Add, Text, x10 y10 w160 Center, Choose Program to control
+  Gui, Add, DropDownList, vProgramGroup, Chrome PDF|Adobe Reader|PowerPoint
+  Gui, Add, Button, default, OK
 return
 
-; Bind Hotkeys 
+; Bind Hotkeys
 bindKeys:
   Msgbox, % "Press OK and then the key you want to bind to Next Page"
   Input, LastKey, L1, {LControl}{RControl}{LAlt}{RAlt}{LShift}{RShift}{LWin}{RWin}{AppsKey}{F1}{F2}{F3}{F4}{F5}{F6}{F7}{F8}{F9}{F10}{F11}{F12}{Left}{Right}{Up}{Down}{Home}{End}{PgUp}{PgDn}{Del}{Ins}{BS}{Capslock}{Numlock}{PrintScreen}{Pause}
@@ -81,7 +81,7 @@ TargetPowerPoint:
     }
 return
 
-; Submit Button
+; Choose Program Form
 buttonok:
   Gui, Submit
 
@@ -92,7 +92,6 @@ buttonok:
     GoSub, TargetAdobe
   else if (ProgramGroup == "PowerPoint")
     GoSub, TargetPowerPoint
-
 return
 
 ; Next Page Hotkey
@@ -101,7 +100,9 @@ NextKey:
   {
     title := % Window%values%
     SetTitleMatchMode, 3
-    ControlSend, Chrome_RenderWidgetHostHWND2, {Right}, %title%
+    ControlGet, OutputVar, Hwnd,,Chrome_RenderWidgetHostHWND1, %title%
+    ControlFocus,,ahk_id %outputvar%
+    ControlSend,, {Right}, ahk_id %outputvar%
   }
   else if (ProgramGroup == "Adobe Reader")
   {
